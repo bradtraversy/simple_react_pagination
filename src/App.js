@@ -26,17 +26,23 @@ const App = () => {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
+  const lastPage = Math.ceil(posts.length / postsPerPage);
+
   // Change page
   const paginate = pageNumber => setCurrentPage(pageNumber);
+  const toPreviousPage = () => setCurrentPage(currentPage-1);
+  const toNextPage = () => setCurrentPage(currentPage+1);
 
   return (
     <div className='container mt-5'>
       <h1 className='text-primary mb-3'>My Blog</h1>
       <Posts posts={currentPosts} loading={loading} />
       <Pagination
-        postsPerPage={postsPerPage}
-        totalPosts={posts.length}
+        currentPage={currentPage}
+        lastPage={lastPage}
         paginate={paginate}
+        toPreviousPage={toPreviousPage}
+        toNextPage={toNextPage}
       />
     </div>
   );
