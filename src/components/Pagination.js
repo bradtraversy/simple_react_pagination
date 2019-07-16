@@ -11,17 +11,17 @@ const Pagination = ({ currentPage, lastPage, paginate, toPreviousPage, toNextPag
     <nav>
       <ul className='pagination'>
         <li className={'page-item ' + (currentPage===1 ? 'disabled' : '')}>
-          <a onClick={toPreviousPage} href='!#' className='page-link' >Previous</a>
+          <button onClick={toPreviousPage} className='page-link' >Previous</button>
         </li>
         {pageNumbers.map(number => (
           <li key={number} className={'page-item ' + (number===currentPage ? 'active' : '')}>
-            <a onClick={() => paginate(number)} href='!#' className='page-link'>
+            <button onClick={() => paginate(number)} className='page-link'>
               {number}
-            </a>
+            </button>
           </li>
         ))}
         <li className={'page-item ' + (currentPage===lastPage ? 'disabled' : '')}>
-            <a onClick={toNextPage} href='!#' className='page-link'>Next</a>
+            <button onClick={toNextPage} className='page-link'>Next</button>
         </li>
       </ul>
     </nav>
